@@ -9,6 +9,7 @@ import Collection from './pages/Collection'
 import Cart from './pages/Cart'
 import About from './pages/About'
 import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
         <Route path='/product/:productId' element={<Product />} />
         <Route path='/contact' element={<Contact />} />
       </Routes>
+      <Footer />
     </div>
   )
 }
