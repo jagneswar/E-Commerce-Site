@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import {assets as assetsf} from '../assets/frontend_assets/assets'
 import { Link, NavLink } from 'react-router-dom'
 import '../index.css'
+import { ShopContext } from '../content/ShopContext'
 
 const Navbar = () => {
     const [visible, setVisible] = useState(false)
+    const {setShowSearch,getCartCount} = useContext(ShopContext)
   return (
     <div className='flex items-center justify-between py-5 font-medium'>
         
@@ -37,7 +39,7 @@ const Navbar = () => {
         </ul>
 
         <div className="flex items-center gap-6">
-            <img src={assetsf.search_icon} className='w-5 cursor-pointer' alt="" />
+            <img onClick={()=>setShowSearch(true)} src={assetsf.search_icon} className='w-5 cursor-pointer' alt="" />
 
             <div className="group relative">
                 <img className="w-5 cursor-pointer" src={assetsf.profile_icon} alt="" />
@@ -52,7 +54,7 @@ const Navbar = () => {
 
             <Link to='/cart' className='relative'>
                 <img src={assetsf.cart_icon} className='w-5 min-w-5' alt="" />
-                <p className='absolute right-[-5px] bottom-[-5px] w-4 text-center leading-4 bg-black text-white aspect-square rounded-full tet-[8px]'>5</p>
+                <p className='absolute right-[-5px] bottom-[-5px] w-4 text-center leading-4 bg-black text-white aspect-square rounded-full tet-[8px]'>{getCartCount()}</p>
             </Link>
             <img onClick={()=>setVisible(true)} src={assetsf.menu_icon} className='w-5 cursor-pointer sm:hidden ' alt="" />
         </div>
